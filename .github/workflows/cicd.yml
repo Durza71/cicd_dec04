@@ -39,11 +39,13 @@ jobs:
       - name: prepate the site
         run: |
            mkdir site
-           mv htmlcov site/
+           mv coverage.html site/
            mv coverage.xml site/
            
       - name: upload the artifacts
         uses: actions/upload-artifact@v4
+        with:
+          path: ./site
       
   deploy:
     runs-on: ubuntu-latest
