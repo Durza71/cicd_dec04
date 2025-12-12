@@ -2,9 +2,7 @@ name: CD
 
 on:
   pull_request:
-    [ master ]
-  paths-ignore:             
-      - README.md
+    branches: [ master ]
 
 jobs:
   Deploy:
