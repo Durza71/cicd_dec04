@@ -6,7 +6,6 @@ on:
 
 jobs:
   Deploy:
-    needs: run-tests
     runs-on: ubuntu-latest
     permissions:
       pages: write
