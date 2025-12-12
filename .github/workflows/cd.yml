@@ -35,11 +35,12 @@ jobs:
             --cov-report=xml \
             --cov-report=html \
 
-      - name: Prepare the webpage
+      - name: Prepare coverage site for deployment
         run: |
-          mkdir sites
-          cp -r htmlcov sites/
+          mkdir -p sites/htmlcov
+          rsync -av --ignore-existing --copy-links --exclude='*.pyc' htmlcov/ sites/htmlcov/
           cp coverage.xml sites/
+
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
