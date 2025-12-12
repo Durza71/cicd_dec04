@@ -38,7 +38,7 @@ jobs:
       - name: Prepare the webpage
         run: |
           mkdir sites
-          cp htmlcov sites/
+          cp -r htmlcov sites/
           cp coverage.xml sites/
 
       - name: Upload artifacts
