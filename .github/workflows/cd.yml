@@ -1,4 +1,4 @@
-name: CD
+name: CI
 
 on:
   pull_request:
@@ -35,19 +35,17 @@ jobs:
             --cov-report=xml \
             --cov-report=html \
 
-      - name: Prepare coverage site for deployment
+      - name: Prepare the webpage
         run: |
-          mkdir -p sites/htmlcov
-          rsync -av --ignore-existing --copy-links --exclude='*.pyc' htmlcov/ sites/htmlcov/
-          cp coverage.xml sites/
+          mkdir sites
+          mv htmlcov sites/
+          mv coverage.xml sites/
 
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+      - name: upload the artifacts
+        uses: actions/upload-pages-artifact@v4
         with:
-          name: github-pages
           path: ./sites
-          
+
   Deploy:
     needs: run-tests
     runs-on: ubuntu-latest
