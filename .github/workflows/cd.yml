@@ -43,8 +43,10 @@ jobs:
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
-        with:     
+        with:
+          name: github-pages
           path: ./sites
+          
   Deploy:
     needs: run-tests
     runs-on: ubuntu-latest
